@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla de Datos de API</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h2>Tabla de Datos de API</h2>
+    <table id="tablaDatos">
+        <tr>
+            <th>Nombre</th>
+            <th>Edad</th>
+            <th>Identidad secreta</th>
+            <th>Poderes</th>
+        </tr>
+    </table>
+
+    <script>
+        // URL de la API
+        var url = 'https://apimocha.com/pruebasapis12/pruebas13';
+
+        // Realizar la solicitud GET a la API
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                // Obtener la tabla
+                var tabla = document.getElementById('tablaDatos');
+
+                // Recorrer los datos y agregar filas a la tabla
+                data.forEach(dato => {
+                    var row = tabla.insertRow();
+                    row.insertCell(0).textContent = dato.nombre;
+                    row.insertCell(1).textContent = dato.edad;
+                    row.insertCell(2).textContent = dato.identidadsecreta;
+                    // Convertir el array de poderes a una cadena separada por comas
+                    row.insertCell(3).textContent = dato.poderes;
+                });
+            })
+            .catch(error => {
+                console.error('Error al obtener los datos:', error);
+            });
+    </script>
+</body>
+</html>

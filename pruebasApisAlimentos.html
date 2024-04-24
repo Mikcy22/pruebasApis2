@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<!--
+    API KEY 7SWUtRYMsbiIy8RvIGVdIn9w6RixyXGLjooq2OyD
+
+-->
+    
+<!--
+Identificación del cliente: e0519cbdbcf34706af664d44944e272e
+
+Secreto del cliente: 1065a0bcd6274c7d889ca4b059bed20b
+Todas las solicitudes deben ir hacia https://platform.fatsecret.com/rest/server.api
+
+POST https://platform.fatsecret.com/rest/server.api
+Content-Type: application/json
+Header: Authorization: Bearer {Access Token}
+Parameters: method=food.get.v2&food_id=33691&format=json
+
+
+-->
+</body>
+
+<script>
+const axios = require('axios');
+
+const query = 'italian wedding soup';
+const api_url = `https://api.api-ninjas.com/v1/recipe?query=${query}`;
+const headers = {
+    'X-Api-Key': 'Tutz3wAvZqDus92pnWx41w==KGZuxLQViZMpOFtL'
+};
+
+axios.get(api_url, { headers })
+    .then(response => {
+        if (response.status === 200) {
+            console.log(response.data);
+        } else {
+            console.log("Error:", response.status, response.data);
+        }
+    })
+    .catch(error => {
+        console.error("Error:", error);
+    });
+
+
+</script>
+</html>
